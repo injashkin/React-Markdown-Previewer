@@ -1,19 +1,35 @@
 .App {
   font-size: 1.1em;
   padding: 0 0.3em;
-  text-align: center;  
-}
+  text-align: center; 
+  & > h1 {
+    font-size: 1.2em; 
+  }   
+} 
+
 
 .content {
   display: flex;  
 }
 
-.row {
-  flex-direction: row;  
+.leftRight {
+  flex-direction: row; 
+  .editor{
+    height: 85vh;
+  }   
+  .preview {
+    height: 85vh;
+  } 
 }
 
-.column {
-  flex-direction: column;  
+.topBottom {
+  flex-direction: column;
+  .editor{
+    height: 40vh;
+  } 
+  .preview {
+    height: 40vh;
+  } 
 }
 
 .editorWrap, .previewWrap {
@@ -30,8 +46,7 @@
 }
 
 .editor {
-  overflow: auto;    
-  height: 85vh;
+  overflow: auto;  
   width: 100%;
   border: 1px solid #000000;
   background: #f0f0f0;
@@ -39,7 +54,9 @@
   resize: none;  
 }
 
-.preview {  
+.preview { 
+  
+  overflow-y: scroll; 
   text-align: left;
   width: 100%;
   border: 1px solid #000000;
@@ -47,15 +64,32 @@
   padding: 0.5em;    
 }
 
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 0.5em;
+}
+
+.madeOn {
+  width: 25%;  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;  
+  align-items:center;
+  margin-right: 0.5em;
+}
+
 @media (max-width: 750px) {
   .App {
-    font-size: 0.9em;    
+    font-size: 0.9em; 
+    & > h1 {
+      font-size: 1em; 
+    }   
   }
   
   .content {
     display: flex;
     flex-direction: column;
-  }
-
-  
+  }  
 }

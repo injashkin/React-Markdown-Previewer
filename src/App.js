@@ -7,9 +7,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {                 
+    this.state = {
       input: markdownText,
-      windowsHorizontal: true
+      windowsLeftRight: true
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -23,30 +23,27 @@ class App extends React.Component {
   }
 
   handleWindowsPosition() {
-    this.setState({       
-      windowsHorizontal: !this.state.windowsHorizontal
+    this.setState({
+      windowsLeftRight: !this.state.windowsLeftRight
     });
   }
 
   render() {
-    const classes = this.state.windowsHorizontal ?
-      {        
-        icon: 'fas fa-arrows-alt',
-        content: 'content row'
+    const classes = this.state.windowsLeftRight ?
+      {
+        icon: 'fas fa-arrows-alt-v',
+        content: 'content leftRight'
       } :
-      {        
-        icon: 'fas fa-columns',
-        content: 'content column'
+      {
+        icon: 'fas fa-arrows-alt-h',
+        content: 'content topBottom'
       };
     return (
       <div className="App">
         <h1>Просмотрщик Markdown на React</h1>
         <div className={classes.content}>
-
           <div className="editorWrap">
-
             <div className="topMenu">
-
               <header className="header">
                 Редактор
               </header>
@@ -54,7 +51,7 @@ class App extends React.Component {
               <Menu
                 icon={classes.icon}
                 onClick={this.handleWindowsPosition}
-                windowsHorizontal={this.state.windowsHorizontal}                
+                windowsLeftRight={this.state.windowsLeftRight}
               />
 
             </div>
@@ -67,41 +64,58 @@ class App extends React.Component {
           </div>
 
           <div className="previewWrap">
-
             <div className="topMenu">
 
               <header className="header">
                 Просмотрщик
-            </header>
+              </header>
 
-            <Menu              
-              icon={classes.icon}
-              onClick={this.handleWindowsPosition}
-            />
-          </div>
+              <Menu
+                icon={classes.icon}
+                onClick={this.handleWindowsPosition}
+                windowsLeftRight={this.state.windowsLeftRight}
+              />
+            </div>
 
             <Previewer
               markdown={this.state.input}
             />
-          </div>
 
+          </div>
         </div >
+        <footer className="footer">
+          <div>
+            <i 
+              className="fab fa-free-code-camp" 
+              title="freeCodeCamp"
+            ></i>    
+            injashkin
+          </div>
+          <div className="madeOn">
+            Сделано на:              
+            <i className="fab fa-html5" title="HTML5"> </i>
+            <i className="fab fa-css3" title="CSS3"> </i>            
+            <i className="fab fa-font-awesome" title="Font Awesome"> </i>
+            <i className="fab fa-sass" title="SCSS"> </i>
+            <i className="fab fa-js" title="Javascript"></i>
+            <i className="fab fa-react" title="React"></i>
+          </div>
+        </footer>
       </div >
     );
   }
 }
 
+
 const Menu = (props) => {
-  
-  const title = props.windowsHorizontal ? 
-        "Расположить окна в виде строк" : 
-        "Расположить окна в виде колонок";
-  
+  const title = props.windowsLeftRight ?
+    "Расположить окна сверху и снизу" :
+    "Расположить окна слева и справа";
   return (
     <div className="memu">
       <i
         title={title}
-        onClick={props.onClick} 
+        onClick={props.onClick}
         className={props.icon}
       />
     </div>
