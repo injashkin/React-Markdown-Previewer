@@ -14,18 +14,34 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleWindowsPosition = this.handleWindowsPosition.bind(this)
+    this.handleEraseText = this.handleEraseText.bind(this)
   }
 
+  //Обработчик для вводимого текста в окне Редактора
   handleChange(event) {
     this.setState({
       input: event.target.value
     });
   }
 
+  //Обработчик для кнопки "Позиция окон", которая переключает 
+  //положение окон Редактора и Просмотрщика (вертикально либо 
+  //горизонтально)
   handleWindowsPosition() {
     this.setState({
       windowsLeftRight: !this.state.windowsLeftRight
     });
+  }
+
+  //Обработчик для кнопки "Ластик", которая очищает окно редактора 
+  //для ввода нового текста
+  handleEraseText() {
+    if (window.confirm("Вы действительно хотите очистить окно редактора?")) {
+      this.setState({
+        input: ""
+      });
+    }
+
   }
 
   render() {
@@ -47,21 +63,23 @@ class App extends React.Component {
               <header className="header">
                 Редактор
               </header>
-
-              <Menu
-                input={this.state.input}
-                icon={classes.icon}
-                onClick={this.handleWindowsPosition}
-                windowsLeftRight={this.state.windowsLeftRight}
-              />
-
+              <div className="toolsMenu">
+                <EraseText
+                  input={this.state.input}
+                  onClick={this.handleEraseText}
+                />
+                <WindowsPosition
+                  icon={classes.icon}
+                  onClick={this.handleWindowsPosition}
+                  windowsLeftRight={this.state.windowsLeftRight}
+                />
+              </div>
             </div>
 
             <Editor
               value={this.state.input}
               onChange={this.handleChange}
             />
-
           </div>
 
           <div className="previewWrap">
@@ -70,12 +88,13 @@ class App extends React.Component {
               <header className="header">
                 Просмотрщик
               </header>
-
-              <Menu
-                icon={classes.icon}
-                onClick={this.handleWindowsPosition}
-                windowsLeftRight={this.state.windowsLeftRight}
-              />
+              <div className="toolsMenu">
+                <WindowsPosition
+                  icon={classes.icon}
+                  onClick={this.handleWindowsPosition}
+                  windowsLeftRight={this.state.windowsLeftRight}
+                />
+              </div>
             </div>
 
             <Previewer
@@ -91,26 +110,30 @@ class App extends React.Component {
   }
 }
 
-
-const Menu = (props) => {
-  const title = props.windowsLeftRight ?
-    "Расположить окна сверху и снизу" :
-    "Расположить окна слева и справа";
+const EraseText = (props) => {
   return (
-    <div className="memu">
-      <ClearEdit input={props.input} />
+    <div>
       <i
-        title={title}
+        className="fas fa-eraser"
+        title="Очистить редактор для ввода нового текста"
         onClick={props.onClick}
-        className={props.icon}
       />
     </div>
   )
 }
 
-const ClearEdit = (props) => {  
+const WindowsPosition = (props) => {
+  const title = props.windowsLeftRight ?
+    "Расположить окна сверху и снизу" :
+    "Расположить окна слева и справа";
   return (
-    <i class="fas fa-eraser" title="Очистить редактор для ввода нового текста"></i>
+    <div>
+      <i
+        className={props.icon}
+        title={title}
+        onClick={props.onClick}
+      />
+    </div>
   )
 }
 
@@ -138,16 +161,21 @@ const Previewer = (props) => {
 const Footer = () => {
   return (
     <footer className="footer">
-      <div>
+      <div className="sourceCode">
         <i
           className="fab fa-free-code-camp"
           title="freeCodeCamp"
-        ></i>
-        injashkin
+        />        
+        <a 
+          href="https://github.com/injashkin/React-Markdown-Previewer"
+        >
+          Исходник на Github <i class="fab fa-github"></i>
+        </a>
+        
       </div>
       <div className="madeOn">
         Сделано на:
-            <i className="fab fa-html5" title="HTML5"> </i>
+        <i className="fab fa-html5" title="HTML5"> </i>
         <i className="fab fa-css3" title="CSS3"> </i>
         <i className="fab fa-font-awesome" title="Font Awesome"> </i>
         <i className="fab fa-sass" title="SCSS"> </i>

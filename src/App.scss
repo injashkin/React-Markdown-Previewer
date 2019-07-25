@@ -45,6 +45,15 @@
   padding: 0 0.5em;
 }
 
+.toolsMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  & > * {
+    margin-left: 0.5em;
+  }
+}
+
 .editor {
   overflow: auto;  
   width: 100%;
@@ -71,17 +80,26 @@
   margin-left: 0.5em;
 }
 
+.sourceCode {
+  & > * {
+    margin-right: 0.5em;
+  }
+}
+
 .madeOn {  
   display: flex;
   flex-direction: row;
   justify-content: space-between;  
-  align-items:center;
-  width: 25%;  
+  align-items:center;  
   margin-right: 0.5em;
+  & > * {
+    margin-left: 0.5em;
+  }
 }
 
 @media (max-width: 750px) {
   .App {
+    min-width: 320px;
     font-size: 0.9em; 
     & > h1 {
       font-size: 1em; 
