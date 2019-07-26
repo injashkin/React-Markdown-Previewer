@@ -97,6 +97,15 @@
   }
 }
 
+.fas:hover, .fab:hover, 
+.far:hover {
+  color: #bbbbbb;
+}
+
+.far {
+  color: #000000;
+}
+
 @media (max-width: 750px) {
   .App {
     min-width: 320px;
