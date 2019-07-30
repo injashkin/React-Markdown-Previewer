@@ -1,4 +1,5 @@
-.App {
+.App { 
+  min-height: 100%; 
   font-size: 1.1em;
   padding: 0 0.3em;
   text-align: center; 
@@ -9,16 +10,17 @@
 
 
 .content {
-  display: flex;  
+  display: flex;    
 }
 
-.leftRight {
-  flex-direction: row; 
+.leftRight {  
+  flex-direction: row;   
+  
   .editor{
-    height: 85vh;
+    height: calc(100vh - 5.1em);
   }   
   .preview {
-    height: 85vh;
+    height: calc(100vh - 5.1em);
   } 
 }
 
@@ -78,6 +80,8 @@
   flex-direction: row;
   justify-content: space-between;
   margin-left: 0.5em;
+  flex: 0 0 auto;
+  
 }
 
 .sourceCode {
@@ -99,7 +103,7 @@
 
 .fas:hover, .fab:hover, 
 .far:hover {
-  color: #bbbbbb;
+  opacity: 0.6;
 }
 
 .far {

@@ -77,6 +77,7 @@ class App extends React.Component {
                   <a
                     href="https://daringfireball.net/projects/markdown/syntax"
                     target="_blank"
+                    rel="noopener noreferrer"
                   ><i
                       className="far fa-question-circle"
                       title="Справка по Markdown"
@@ -173,14 +174,23 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="sourceCode">
-        <i
-          className="fab fa-free-code-camp"
-          title="freeCodeCamp"
-        />
-        <a
-          href="https://github.com/injashkin/React-Markdown-Previewer"
-        >
-          Исходник на Github <i class="fab fa-github"></i>
+        <a href="https://www.freecodecamp.org/injashkin"
+          target="_blank"
+          rel="noopener noreferrer">
+          <i
+            className="fab fa-free-code-camp"
+            title="freeCodeCamp"
+          />
+        </a>
+
+        <a href="https://github.com/injashkin/React-Markdown-Previewer"
+          target="_blank"
+          rel="noopener noreferrer">
+          <i
+            className="fab fa-github"
+            title="Исходники на Github"
+
+          />
         </a>
 
       </div>
