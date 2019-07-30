@@ -1,0 +1,128 @@
+.app {
+  font-size: 1.1em;
+  padding: 0 0.3em;
+  text-align: center; 
+  & > h1 {
+    font-size: 1.2em; 
+  }   
+} 
+
+.content {
+  display: flex;  
+}
+
+.leftRight {
+  flex-direction: row; 
+  .editor{
+    height: 85vh;
+  }   
+  .preview {
+    height: 85vh;
+  } 
+}
+
+.topBottom {
+  flex-direction: column;
+  .editor{
+    height: 40vh;
+  } 
+  .preview {
+    height: 40vh;
+  } 
+}
+
+.editorWrap, .previewWrap {
+  flex: 1 1 0;
+  margin: 0 0.3em;
+}
+
+.topMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #000000;
+  padding: 0 0.5em;
+}
+
+.toolsMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  & > * {
+    margin-left: 0.5em;
+  }
+}
+
+.editor {
+  overflow: auto;  
+  width: 100%;
+  border: 1px solid #000000;
+  background: #f0f0f0;
+  padding: 0.5em;
+  resize: none;  
+}
+
+.preview { 
+  
+  overflow-y: scroll; 
+  text-align: left;
+  width: 100%;
+  border: 1px solid #000000;
+  background: #f0f0f0;
+  padding: 0.5em;    
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 0.5em;
+}
+
+.sourceCode {
+  & > * {
+    margin-right: 0.5em;
+  }
+}
+
+.madeOn {  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;  
+  align-items:center;  
+  margin-right: 0.5em;
+  & > * {
+    margin-left: 0.5em;
+  }
+}
+
+#root {		
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background: #e3e3e3;
+}
+
+.fas:hover, .fab:hover, 
+.far:hover {
+  color: #bbbbbb;
+}
+
+.far {
+  color: #000000;
+}
+
+@media (max-width: 750px) {
+  .App {
+    min-width: 320px;
+    font-size: 0.9em; 
+    & > h1 {
+      font-size: 1em; 
+    }   
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+  }  
+}
